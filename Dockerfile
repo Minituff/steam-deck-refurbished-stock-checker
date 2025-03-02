@@ -33,6 +33,13 @@ ENV \
     CRON_SCHEDULE_ENABLED=true \
     APP_VERSION="0.0.0"
 
-
+LABEL \
+    org.opencontainers.image.source="https://github.com/Minituff/steam-deck-refurbished-stock-checker" \
+    org.opencontainers.image.title="Refurbished Steam Deck Notifier" \
+    org.opencontainers.image.description="Refurbished Steam Deck Notifier" \
+    org.opencontainers.image.authors="James Tufarelli" \
+    org.opencontainers.image.source="https://github.com/Minituff/steam-deck-refurbished-stock-checker" \
+    org.opencontainers.image.licenses="MIT"
+    
 # Run the entrypoint script
 ENTRYPOINT ["bash", "/entrypoint.sh"]
