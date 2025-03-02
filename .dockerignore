@@ -9,6 +9,7 @@
 !entrypoint.sh
 !checker.py
 !requirements.txt
+!requirements-dev.txt
 !crontab
 
 
