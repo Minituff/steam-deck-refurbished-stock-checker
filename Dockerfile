@@ -27,7 +27,7 @@ ENV \
     # Set the default cron schedule
     CRON_SCHEDULE="* * * * *" \
     # Set python path
-    PYTHONPATH="$PYTHONPATH:.:/app" \
+    PYTHONPATH=".:/app" \
     # Set the default cron schedule enabled
     CRON_SCHEDULE_ENABLED=true
 

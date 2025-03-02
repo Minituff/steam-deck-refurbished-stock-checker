@@ -22,7 +22,7 @@ print("Checking for in stock Steam Deck...")
 
 # Configurations
 webhook_url = os.getenv("DISCORD_WEBHOOK_URL", "")
-page_url = os.getenv("PAGE_URL", "https://store.steampowered.com/sale/steamdeckrefurbished/")
+page_url = os.getenv("PAGE_URL", "https://store.steampowered.com/sale/steamdeckrefurbished")
 product_titles = os.getenv("PRODUCT_TITLES", ",".join(product_titles_default)).strip().split(',')
 debug = os.getenv("DEBUG", "False").lower() == "true"
 
@@ -73,10 +73,19 @@ try:
     driver.save_screenshot(screenshot_path)
 
     # Send a notification if any of the products have an "Add to Cart" button visible
-    if product_found or debug:
+    if product_found:
         print("One of the Steam Deck models is now in stock!")
         message = {
-            "content": f"One of the Steam Deck models is now in stock! Check it out here: <{page_url}>",
+            "content": f":white_check_mark: One of the Steam Deck models is now in stock!\nCheck it out here: <{page_url}>",
+        }
+        files = {
+            "file": ("screenshot.png", open(screenshot_path, "rb"))
+        }
+        response = requests.post(webhook_url, data=message, files=files)
+    elif debug:
+        print("Neither Steam Deck model is in stock, but notifying since DEBUG=true.")
+        message = {
+            "content": f":x: Sorry, none of the Steam Decks are in stock!\nSee for yourself: <{page_url}>",
         }
         files = {
             "file": ("screenshot.png", open(screenshot_path, "rb"))

@@ -11,11 +11,12 @@ services:
     container_name: minituff/steam_deck-notifier
     restart: unless-stopped
     environment:
+      - DISCORD_WEBHOOK_URL=
       - CRON_SCHEDULE=* * * * * # Every minute
       - TZ=America/Los_Angeles
-      - DISCORD_WEBHOOK_URL=
       - RUN_ON_START=true
-      - PRODUCT_TITLES=Steam Deck 512GB OLED - Valve Certified Refurbished,Steam Deck 1TB OLED - Valve Certified Refurbished
+      # Comma seperated list
+      - PRODUCT_TITLES=Steam Deck 512GB OLED - Valve Certified Refurbished,Steam Deck 1TB OLED - Valve Certified Refurbished 
 ```
 
 ## Disclaimer

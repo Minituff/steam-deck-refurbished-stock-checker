@@ -11,11 +11,14 @@ install_cron(){
     sed -i '/checker/d' tempcron
 
     # Add the new cron job to the file, redirecting output to a log file
-    echo "$CRON_SCHEDULE /usr/local/bin/python3 /app/checker.py >> /var/log/cron.log 2>&1" >>tempcron
+    echo "$CRON_SCHEDULE . /etc/environment; /usr/local/bin/python3 /app/checker.py >> /var/log/cron.log 2>&1" >>tempcron
 
     # Install the new cron jobs and remove the tempcron file
     crontab tempcron && rm tempcron
 }
+
+# Dump the current environment variables to /etc/environment
+printenv | sed 's/^\(.*\)$/export \1/g' > /etc/environment
 
 if [ "${CRON_SCHEDULE_ENABLED,,}" = "true" ]; then
     install_cron
