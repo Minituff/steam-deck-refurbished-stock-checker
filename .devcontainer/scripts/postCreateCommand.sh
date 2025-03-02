@@ -44,5 +44,5 @@ cecho "GREEN" "Success!! Development enviornment ready to go!!"
 cecho "GREEN" "Use the command 'sd --help' to get started."
 
 
-zsh && omz reload
+exit 0
 # No need to 'source ~/.zshrc' since the terminal won't be open yet
