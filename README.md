@@ -10,7 +10,9 @@ This project provides a script to monitor the availability of refurbished Steam 
 ```yaml
 services:
   steam_deck-notifier:
-    container_name: minituff/steam_deck-notifier
+    image: minituff/steam-deck-refurbished-stock-checker
+    container_name: minituff/steam-deck-refurbished-stock-checker
+    hostname: minituff/steam-deck-refurbished-stock-checker
     restart: unless-stopped
     environment:
       - DISCORD_WEBHOOK_URL=
@@ -20,6 +22,9 @@ services:
       # Comma seperated list
       - PRODUCT_TITLES=Steam Deck 512GB OLED - Valve Certified Refurbished,Steam Deck 1TB OLED - Valve Certified Refurbished 
 ```
+## Discord Webook URL
+This can be obtained by following these steps in your Discord server:
+* `Server settings` -> `Apps` -> `Integrations` -> `Webhooks` -> `New Webook` *Name it* -> `Copy Webhook URL`
 
 ## Disclaimer
 
