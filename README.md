@@ -11,8 +11,8 @@ This project provides a script to monitor the availability of refurbished Steam 
 services:
   steam_deck-notifier:
     image: minituff/steam-deck-refurbished-stock-checker
-    container_name: minituff/steam-deck-refurbished-stock-checker
-    hostname: minituff/steam-deck-refurbished-stock-checker
+    container_name: steam-deck-refurbished-stock-checker
+    hostname: steam-deck-refurbished-stock-checker
     restart: unless-stopped
     environment:
       - DISCORD_WEBHOOK_URL=
