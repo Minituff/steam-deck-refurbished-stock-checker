@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Starting Steam Deck notifier v$APP_VERSION..."
 install_cron(){
     # Echo the CRON schedule for logging/debugging
     echo "Installing CRON schedule: $CRON_SCHEDULE in TZ: $TZ"

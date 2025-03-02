@@ -30,7 +30,8 @@ ENV \
     # Set python path
     PYTHONPATH=".:/app" \
     # Set the default cron schedule enabled
-    CRON_SCHEDULE_ENABLED=true
+    CRON_SCHEDULE_ENABLED=true \
+    APP_VERSION="0.0.0"
 
 
 # Run the entrypoint script
