@@ -10,7 +10,7 @@
 !checker.py
 !requirements.txt
 !requirements-dev.txt
-!crontab
+!cron-wrapper.sh
 
 
 # Ignore unnecessary files inside allowed directories

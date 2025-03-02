@@ -17,6 +17,7 @@ RUN python3 -m pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy application files
 COPY checker.py /app/
+COPY --chmod=7777 cron-wrapper.sh /app/
 COPY --chmod=7777 entrypoint.sh /entrypoint.sh
 
 ENV \

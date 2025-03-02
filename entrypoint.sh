@@ -8,13 +8,11 @@ install_cron(){
     crontab -l >tempcron 2>/dev/null || touch tempcron
 
     # Remove the existing cron job for your backup script from the file
-    sed -i '/checker/d' tempcron
+    sed -i '/checker\|cron-wrapper/d' tempcron
 
-    # Add a test job that runs every minute to verify cron is working
-    echo "* * * * * echo \"[CRON TEST JOB RAN at \$(date)]\" >> /var/log/cron-debug.log 2>&1" >>tempcron
+    # Add the main cron job using the wrapper script
+    echo "$CRON_SCHEDULE /app/cron-wrapper.sh" >>tempcron
     
-    # Add the main cron job with environment
-echo "$CRON_SCHEDULE . /etc/environment; echo \"[CRON JOB STARTED at \$(date)]\" >> /var/log/cron-debug.log; echo \"Running Python script...\" >> /var/log/cron-debug.log; /usr/local/bin/python3 -u /app/checker.py >> /var/log/cron-debug.log 2>&1; echo \"[CRON JOB COMPLETED at \$(date)]\" >> /var/log/cron-debug.log" >>tempcron
     # Install the new cron jobs and remove the tempcron file
     crontab tempcron && rm tempcron
     
@@ -27,7 +25,8 @@ echo "$CRON_SCHEDULE . /etc/environment; echo \"[CRON JOB STARTED at \$(date)]\"
 printenv | sed 's/^\(.*\)$/export \1/g' > /etc/environment
 
 # Create log files
-touch /var/log/cron-debug.log
+touch /var/log/cron.log
+chmod 666 /var/log/cron.log  # Make sure log is writable
 
 if [ "${CRON_SCHEDULE_ENABLED,,}" = "true" ]; then
     install_cron
@@ -36,10 +35,7 @@ else
 fi
 
 # Start cron in the foreground to see debug output
-echo "Starting cron service..."
 service cron start
-echo "Cron service started. Status:"
-service cron status
 
 if [ "${RUN_ON_START,,}" = "true" ]; then
     echo "Running checker script on start..."
@@ -49,4 +45,4 @@ fi
 
 echo "Container setup complete, waiting for cron jobs to execute..."
 # Keep the container running while tailing the debug log
-exec tail -f /var/log/cron-debug.log
+exec tail -f /var/log/cron.log
