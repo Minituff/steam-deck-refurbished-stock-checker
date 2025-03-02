@@ -1,5 +1,16 @@
 # Steam Deck Refurbished Stock Checker
 
+Get notified on Discord when a refurbished Steam Deck is back in stock!
+<br>
+
+  [![Pulls from DockerHub](https://img.shields.io/docker/pulls/minituff/steam-deck-refurbished-stock-checker?logo=docker)](https://hub.docker.com/r/minituff/steam-deck-refurbished-stock-checker)
+  [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/minituff/steam-deck-refurbished-stock-checker/latest?label=latest%20version)](https://hub.docker.com/r/minituff/steam-deck-refurbished-stock-checker)
+  [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/minituff/steam-deck-refurbished-stock-checker/latest?label=size)](https://hub.docker.com/r/minituff/steam-deck-refurbished-stock-checker)
+
+
+
+</div>
+
 ## Description
 
 This project provides a script to monitor the availability of refurbished Steam Deck units on the official store page and send a notification to a specified Discord channel when stock is detected. The script uses Selenium for web scraping and a Discord webhook for notifications.
