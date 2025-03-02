@@ -6,7 +6,7 @@ This project provides a script to monitor the availability of refurbished Steam 
 
 ![screenshot=t](media/screenshot.png)
 
-## Alternative Setup with docker and docker compose
+## Setup with Docker compose
 ```yaml
 services:
   steam_deck-notifier:
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
     environment:
       - DISCORD_WEBHOOK_URL=
-      - CRON_SCHEDULE=* * * * * # Every minute
+      - CRON_SCHEDULE=*/5 * * * * # Every 5 minutess
       - TZ=America/Los_Angeles
       - RUN_ON_START=false
       # Comma seperated list

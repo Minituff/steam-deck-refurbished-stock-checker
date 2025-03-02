@@ -26,7 +26,7 @@ ENV \
     # Set the default timezone
     TZ="Etc/UTC" \
     # Set the default cron schedule
-    CRON_SCHEDULE="* * * * *" \
+    CRON_SCHEDULE="*/5 * * * *" \
     # Set python path
     PYTHONPATH=".:/app" \
     # Set the default cron schedule enabled
