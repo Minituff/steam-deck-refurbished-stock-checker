@@ -1,0 +1,21 @@
+# This dockerignore is being used as a whitelist.
+
+# Ignore everything
+*
+
+# Files/Folders we need
+!Dockerfile
+!.dockerignore
+!entrypoint.sh
+!checker.py
+!requirements.txt
+!crontab
+
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/*.log
+**/.DS_Store
+**/Thumbs.db
+**/__pycache__

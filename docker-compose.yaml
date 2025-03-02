@@ -1,0 +1,13 @@
+services:
+  steam_deck-notifier:
+    container_name: steam_deck-notifier
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - CRON_SCHEDULE=* * * * * # Every minute
+      - TZ=America/Los_Angeles
+      - DISCORD_WEBHOOK_URL=
+      - RUN_ON_START=true
+      - PRODUCT_TITLES=Steam Deck 512GB OLED - Valve Certified Refurbished,Steam Deck 1TB OLED - Valve Certified Refurbished
