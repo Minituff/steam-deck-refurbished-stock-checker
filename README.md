@@ -19,7 +19,7 @@ services:
       - CRON_SCHEDULE=*/5 * * * * # Every 5 minutess
       - TZ=America/Los_Angeles
       - RUN_ON_START=false
-      # Comma seperated list
+      # Comma seperated list from https://store.steampowered.com/sale/steamdeckrefurbished
       - PRODUCT_TITLES=Steam Deck 512GB OLED - Valve Certified Refurbished,Steam Deck 1TB OLED - Valve Certified Refurbished 
 ```
 ## Discord Webook URL
